@@ -23,18 +23,30 @@ const IndividualFilm = () => {
     getFilmData()
   }, [imdbID])
 
-  const { Title, Year, Rated } = filmData
+  const { Title, Released, Poster, Metascore, imdbRating } = filmData
 
   return (
 
-    
+    <div id="film-page">
 
-    <>
-      <h1>{Title}</h1>
-    </>
+      <div id='main'>
+
+        <div id='left'>
+          <h1>{Title}</h1>
+          <p>{Released}</p>
+          <div id='ratings'>
+            <p>Metascore: <span>{Metascore}</span></p>
+            <p>IMDB: <span>{imdbRating}</span></p>
+          </div>
+        </div>
+        <div id='right'>
+          <img src={Poster} alt="poster" />
+        </div>
+
+      </div>
 
 
-
+    </div>
   )
 }
 
