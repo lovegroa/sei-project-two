@@ -12,15 +12,25 @@ import IndividualFilm from './components/IndividualFilm'
 const App = () => {
 
   return (
-    <BrowserRouter>
-      <SiteNavbar />
-      <Routes>
-        <Route path='/' element={<Home />}/>
-        <Route path='search-results/:searchTerm' element={<SearchResults />}/>
-        <Route path='/film/:imdbID' element={<IndividualFilm />}/>
-        {/* <Route path='film' element={<IndividualFilm />}/> */}
-      </Routes>
-    </BrowserRouter>
+    <>
+
+      <div className='bg'>    </div>
+      <div className='bg bg2'>    </div>
+      <div className='bg bg3'>    </div>
+
+      <BrowserRouter>
+        <SiteNavbar />
+        <div id='outside-container'>
+          <Routes>
+            <Route path='/' element={<Home />} />
+            <Route path='search-results/:searchTerm' element={<SearchResults />} />
+            <Route path='/film/:imdbID' element={<IndividualFilm />} />
+            {/* <Route path='film' element={<IndividualFilm />}/> */}
+          </Routes>
+        </div>
+      </BrowserRouter>
+
+    </>
   )
 }
 

@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom'
 
 const Home = () => {
   const navigate = useNavigate()
-  const [ searchValue, setSearchValue ] = useState('')
+  const [searchValue, setSearchValue] = useState('')
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -24,7 +24,7 @@ const Home = () => {
         <input type="submit" value='Search' />
       </form>
     </>
-    
+
   )
 }
 

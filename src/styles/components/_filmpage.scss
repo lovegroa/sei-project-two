@@ -1,29 +1,78 @@
 #film-page{
 
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
+  margin: 0 auto;
+  // display: flex;
+  // flex-direction: row;
+  // justify-content: center;
+  // height: 100%;
 }
 
 #main{
 
   display: flex;
   justify-content: space-between;
-  height: 90vh;
-  max-width: 800px;
+  height: 100%;
 
   #right, #left{
 
     width: 50%;
+    height: 100%;
 
   }
 
   img{
 
     height: 100%;
+    width: 100%;
     object-fit: cover;
 
 
   }
+
+}
+
+.bg {
+  animation:slide 15s ease-in-out infinite alternate;
+  background-image: linear-gradient(-60deg, rgb(0, 0, 0) 50%, rgb(255, 255, 255) 50%, rgb(0, 0, 0) );
+  bottom:0;
+  left:-50%;
+  opacity:.5;
+  position:fixed;
+  right:-50%;
+  top:0;
+  z-index:-1;
+}
+
+.bg2 {
+  animation-direction:alternate-reverse;
+  animation-duration:20s;
+}
+
+.bg3 {
+  animation-duration:25s;
+}
+
+
+@keyframes slide {
+  0% {
+    transform:translateX(-25%);
+  }
+  100% {
+    transform:translateX(25%);
+  }
+}
+
+#outside-container{
+
+  max-width: 1000px;
+  margin: 0  auto;
+  background-color: #222222;
+  min-height: 90vh;
+  border-radius: 30px;
+  padding: 30px;
+  color: white;
+  display: flex;
+
+
 
 }
