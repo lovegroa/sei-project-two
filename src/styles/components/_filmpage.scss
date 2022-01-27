@@ -63,16 +63,14 @@
 }
 
 #outside-container{
-
   max-width: 1000px;
   margin: 0  auto;
   background-color: #222222;
   min-height: 90vh;
   border-radius: 30px;
+  border: 7px solid $border-color;
+  @extend %box-shadow;
   padding: 30px;
   color: white;
   display: flex;
-
-
-
 }

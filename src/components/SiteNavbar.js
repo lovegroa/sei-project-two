@@ -38,6 +38,12 @@ const SiteNavbar = () => {
     }
     getPreSearchData()
   }, [searchValue])
+
+  const clearSearch = () => {
+    console.log('click')
+    setQuickSearchFilm({})
+    setSearchValue('')
+  }
   return (
     <ul>
       <div className="nav-container">
@@ -49,14 +55,15 @@ const SiteNavbar = () => {
             <div id="search-box">
               <input onChange={updateSearchValue} type="text" name='search' placeholder='Search' value={searchValue}/>
               {quickSearchFilm.Response === 'True' && 
-                <div className='quick-search-container'>
-                  <img src={quickSearchFilm.Poster} alt={quickSearchFilm.Title}/>
-                  <div className='quick-search-text'>
-                    <h3>{quickSearchFilm.Title}</h3>
-                    <p>{quickSearchFilm.Released}</p>
-                  </div>
-                  
-                </div>}
+                  <Link to ={'/film/' + quickSearchFilm.imdbID} onClick={clearSearch}>
+                    <div className='quick-search-container'>
+                      <img src={quickSearchFilm.Poster} alt={quickSearchFilm.Title}/>
+                      <div className='quick-search-text'>
+                        <h3>{quickSearchFilm.Title}</h3>
+                        <p>{quickSearchFilm.Released}</p>
+                      </div>
+                    </div>
+                  </Link>}
             </div>
             <input type="submit" value='Search' />
           </form>

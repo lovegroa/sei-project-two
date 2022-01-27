@@ -8,14 +8,23 @@ main {
       text-decoration: none;
       color: black;
       .search-card {
+        background-color: #ccc;
         @include flex-center(column);
         justify-content: space-around;
-        border: 1px solid black;
+        border: 2px solid $border-color;
         width: 250px;
-        height: 500px;
+        height: 400px;
         margin: 20px;
+        border-radius: 5px;
+        padding: 0 15px;
+        @extend %box-shadow;
+        &:Hover {
+          background-color: darken(#ccc, 10%);
+          transform: scale(1.05);
+        }
         img {
           width: 80%;
+          @extend %box-shadow;
         }
       }
     }

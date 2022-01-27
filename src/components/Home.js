@@ -19,10 +19,10 @@ const Home = () => {
   return (
     <>
       <h1>Home</h1>
-      <form onSubmit={handleSubmit}>
+      {/* <form onSubmit={handleSubmit}>
         <input onChange={updateSearchValue} type="text" name='search' placeholder='Search' />
         <input type="submit" value='Search' />
-      </form>
+      </form> */}
     </>
 
   )
