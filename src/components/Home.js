@@ -9,7 +9,7 @@ const Home = () => {
     e.preventDefault()
 
     console.log(searchValue)
-    navigate(`/search-results/${searchValue}`)
+    searchValue && navigate(`/search-results/${searchValue}`)
     setSearchValue('')
   }
 

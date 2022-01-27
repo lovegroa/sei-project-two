@@ -19,12 +19,15 @@ const SearchResults = () => {
         console.log(err)
       }
     }
+    console.log(searchTerm)
     getSearchData()
   }, [searchTerm])
   
+  
   return (
     <main>
-      <h1>Searched Films</h1>
+      <h1>Search Results</h1>
+      
       <div className='results-container'>
         {films.map(film => {
           const { imdbID, Title, Type, Year, Poster } = film

@@ -1,2 +1,8 @@
 @import './common/variables';
 @import './components/search-results';
+@import './components/site-navbar';
+
+* {
+  box-sizing: border-box;
+  // margin: 0;
+}

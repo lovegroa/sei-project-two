@@ -1,0 +1,15 @@
+ul {
+  height: 10vh;
+  .nav-container {
+    @include flex-center(row);
+    justify-content: space-around;
+    li {
+      list-style: none;
+      cursor: pointer;
+      a {
+        text-decoration: none;
+        color: black;
+      }
+    }
+  }
+}
