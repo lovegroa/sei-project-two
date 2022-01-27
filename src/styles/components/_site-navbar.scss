@@ -2,13 +2,51 @@ ul {
   height: 2vh;
   .nav-container {
     @include flex-center(row);
-    justify-content: space-around;
+    #search-li {
+      flex-grow: 1;
+    }
+    form {
+      @include flex-center(row);
+      #search-box{
+        width: 400px;
+        input[type=text] {
+          padding: 6px;
+          width: 100%;
+        }
+        .quick-search-container {
+          position: absolute;
+          border: 1px solid black;
+          @include flex-center(row);
+          justify-content: flex-start;
+          height: 70px;
+          width: 400px;
+          img {
+            height: 60px;
+            margin: 0 10px;
+          }
+          h3 {
+            font-size: 12px;
+          }
+          p {
+            font-size: 10px;
+          }
+          .quick-search-text {
+            @include flex-center(column);
+            
+          }
+        }
+      }
+    }
     li {
       list-style: none;
       cursor: pointer;
+      margin: 0 15px;
       a {
         text-decoration: none;
         color: black;
+      }
+      button, input[type=submit] {
+        padding: 6px;
       }
     }
   }
