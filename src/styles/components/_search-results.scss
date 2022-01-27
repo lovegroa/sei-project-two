@@ -1,0 +1,24 @@
+
+main {
+  @include flex-center(column);
+  .results-container{
+    @include flex-center(row);
+    flex-wrap: wrap;
+    a {
+      text-decoration: none;
+      color: black;
+      .search-card {
+        @include flex-center(column);
+        border: 1px solid black;
+        width: 250px;
+        margin: 20px;
+        img {
+          width: 90%;
+        }
+      }
+    }
+    
+  }
+}
+
+
