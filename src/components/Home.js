@@ -1,6 +1,8 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
+import noPoster from '../images/noposter.jpeg'
+
 
 const Home = () => {
   const navigate = useNavigate()
@@ -79,7 +81,8 @@ const Home = () => {
               </div>
             </div>
             <div id='right'>
-              <img src={Poster} alt="poster" />
+              {Poster === 'N/A' ? <img src={noPoster} alt="poster" /> : <img src={Poster} alt="poster" />}
+
             </div>
 
           </div>

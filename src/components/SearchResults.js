@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { useParams, Link } from 'react-router-dom'
+import noPoster from '../images/noposter.jpeg'
+
 
 const SearchResults = () => {
 
@@ -36,7 +38,7 @@ const SearchResults = () => {
             <Link key={imdbID} to={'/film/' + imdbID}>
               <div className='search-card'>
                 <h3>{Title}</h3>
-                <img src={Poster} alt={Title} />
+                {Poster === 'N/A' ? <img src={noPoster} alt="poster" /> : <img src={Poster} alt="poster" />}
                 <p>Year Released: {Year}</p>
                 <p>{Type}</p>
               </div>
