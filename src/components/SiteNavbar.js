@@ -47,7 +47,6 @@ const SiteNavbar = () => {
   }, [searchValue])
 
   const clearSearch = () => {
-    console.log('click')
     setQuickSearchFilm({})
     setSearchValue('')
   }

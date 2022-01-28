@@ -6,19 +6,19 @@ import noPoster from '../images/noposter.jpeg'
 
 
 
-const IndividualFilm = ( { Spinner }) => {
+const IndividualFilm = ({ Spinner }) => {
 
   const { imdbID } = useParams()
   const [filmData, setFilmData] = useState({})
-  const [isError, setIsError ] = useState('')
-  console.log('param', imdbID)
+  const [isError, setIsError] = useState('')
+  // console.log('param', imdbID)
 
   useEffect(() => {
     const getFilmData = async () => {
       try {
         const { data } = await axios.get(`http://www.omdbapi.com/?i=${imdbID}&apikey=66b63fd8`)
-        console.log(data)
-        data.Response === 'True' ? 
+        // console.log(data)
+        data.Response === 'True' ?
           setFilmData(data)
           : setIsError(data.Response)
       } catch (err) {
@@ -34,7 +34,7 @@ const IndividualFilm = ( { Spinner }) => {
 
     <div id="film-page">
       <div id='main'>
-        {filmData.Title ? 
+        {filmData.Title ?
           <>
             <div id='left'>
               <h1>{Title}</h1>

@@ -1,34 +1,19 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import noPoster from '../images/noposter.jpeg'
 
-
 const Home = ({ Spinner }) => {
-  const navigate = useNavigate()
   const [searchValue, setSearchValue] = useState('')
   const [filmData, setFilmData] = useState({})
   const [isError, setIsError] = useState('')
-
-
-  const handleSubmit = (e) => {
-    e.preventDefault()
-
-    console.log(searchValue)
-    searchValue && navigate(`/search-results/${searchValue}`)
-    setSearchValue('')
-  }
-
-  const updateSearchValue = (e) => {
-    setSearchValue(e.target.value)
-  }
 
   useEffect(() => {
 
     const getRandomWord = async () => {
       try {
         const { data } = await axios.get('https://random-word-api.herokuapp.com/word?number=1')
-        console.log(data)
+        // console.log(data)
         setSearchValue(data)
         // console.log(data.Response)
       } catch (error) {
@@ -44,7 +29,7 @@ const Home = ({ Spinner }) => {
     const getRandomFilm = async () => {
       try {
         const { data } = await axios.get(`http://www.omdbapi.com/?t=${searchValue}&apikey=66b63fd8`)
-        console.log('test', data)
+        // console.log('test', data)
 
         data.Error ? setSearchValue('Cage') : setFilmData(data)
 
@@ -87,18 +72,13 @@ const Home = ({ Spinner }) => {
             </div>
           </div>
         </Link>
-        : 
+        :
         isError ?
           <h3>{isError}. Try Searching films instead</h3>
           : <Spinner />
-          // null
       }
-      
 
-      {/* <form onSubmit={handleSubmit}>
-        <input onChange={updateSearchValue} type="text" name='search' placeholder='Search' />
-        <input type="submit" value='Search' />
-      </form> */}
+
     </>
 
   )

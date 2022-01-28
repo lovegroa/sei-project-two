@@ -10,7 +10,7 @@ const SearchResults = ({ Spinner }) => {
   const [isError, setIsError] = useState('')
 
   const { searchTerm } = useParams()
-  console.log(searchTerm)
+  // console.log(searchTerm)
 
   useEffect(() => {
     const getSearchData = async () => {
@@ -32,7 +32,7 @@ const SearchResults = ({ Spinner }) => {
     <main>
       <h1>Search Results</h1>
       <div className='results-container'>
-        {films.length ? 
+        {films.length ?
           films.map(film => {
             const { imdbID, Title, Type, Year, Poster } = film
             return (
