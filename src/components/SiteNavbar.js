@@ -35,7 +35,7 @@ const SiteNavbar = () => {
 
     const getPreSearchData = async () => {
       try {
-        const { data } = await axios.get(`http://www.omdbapi.com/?t=${searchValue}&apikey=66b63fd8`)
+        const { data } = await axios.get(`https://www.omdbapi.com/?t=${searchValue}&apikey=66b63fd8`)
         setQuickSearchFilm(data)
         // console.log(data.Response)
       } catch (error) {

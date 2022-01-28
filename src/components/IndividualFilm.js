@@ -16,7 +16,7 @@ const IndividualFilm = ({ Spinner }) => {
   useEffect(() => {
     const getFilmData = async () => {
       try {
-        const { data } = await axios.get(`http://www.omdbapi.com/?i=${imdbID}&apikey=66b63fd8`)
+        const { data } = await axios.get(`https://www.omdbapi.com/?i=${imdbID}&apikey=66b63fd8`)
         // console.log(data)
         data.Response === 'True' ?
           setFilmData(data)

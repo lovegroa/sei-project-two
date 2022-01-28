@@ -15,7 +15,7 @@ const SearchResults = ({ Spinner }) => {
   useEffect(() => {
     const getSearchData = async () => {
       try {
-        const { data } = await axios.get(`http://www.omdbapi.com/?s=${searchTerm}&apikey=66b63fd8`)
+        const { data } = await axios.get(`https://www.omdbapi.com/?s=${searchTerm}&apikey=66b63fd8`)
         data.Response === 'True' ?
           setFilms(data.Search)
           :
