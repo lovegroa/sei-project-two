@@ -6,6 +6,7 @@ const SearchResults = () => {
 
   const [films, setFilms] = useState([])
 
+
   const { searchTerm } = useParams()
   console.log(searchTerm)
 
@@ -22,12 +23,12 @@ const SearchResults = () => {
     console.log(searchTerm)
     getSearchData()
   }, [searchTerm])
-  
-  
+
+
   return (
     <main>
       <h1>Search Results</h1>
-      
+
       <div className='results-container'>
         {films.map(film => {
           const { imdbID, Title, Type, Year, Poster } = film
@@ -35,7 +36,7 @@ const SearchResults = () => {
             <Link key={imdbID} to={'/film/' + imdbID}>
               <div className='search-card'>
                 <h3>{Title}</h3>
-                <img src={Poster} alt={Title}/>
+                <img src={Poster} alt={Title} />
                 <p>Year Released: {Year}</p>
                 <p>{Type}</p>
               </div>

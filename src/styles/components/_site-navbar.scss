@@ -4,7 +4,15 @@ ul {
   height: 6vh;
   padding: 7px 0;
   margin-bottom: 7px;
+  display: flex;
+  justify-content: center;
+  justify-items: center;
+  align-items: center;
+  align-content: center;
+
+
   .nav-container {
+    width: 1000px;
     max-width: 1000px;
     margin: 0 auto;
     @include flex-center(row);

@@ -1,6 +1,6 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 const Home = () => {
   const navigate = useNavigate()
@@ -43,7 +43,7 @@ const Home = () => {
         const { data } = await axios.get(`http://www.omdbapi.com/?t=${searchValue}&apikey=66b63fd8`)
         console.log('test', data)
 
-        data.Error ? setSearchValue('So Random') : setFilmData(data)
+        data.Error ? setSearchValue('Cage') : setFilmData(data)
 
         // console.log(data.Response)
       } catch (error) {
@@ -56,32 +56,37 @@ const Home = () => {
     getRandomFilm()
   }, [searchValue])
 
-  const { Title, Released, Poster, Metascore, imdbRating } = filmData
+  const { Title, Released, Poster, Metascore, imdbRating, imdbID } = filmData
 
 
   return (
     <>
       <h1>Home</h1>
-      <div id="film-page">
+      <h2>Here is a random film just for you:</h2>
+      <br></br>
+      <Link to={`/film/${imdbID}`}>
+        <div id="film-page">
 
-        <div id='main'>
+          <div id='main'>
 
-          <div id='left'>
-            <h1>{Title}</h1>
-            <p>{Released}</p>
-            <div id='ratings'>
-              <p>Metascore: <span>{Metascore}</span></p>
-              <p>IMDB: <span>{imdbRating}</span></p>
+
+            <div id='left'>
+              <h1>{Title}</h1>
+              <p>{Released}</p>
+              <div id='ratings'>
+                <p>Metascore: <span>{Metascore}</span></p>
+                <p>IMDB: <span>{imdbRating}</span></p>
+              </div>
             </div>
+            <div id='right'>
+              <img src={Poster} alt="poster" />
+            </div>
+
           </div>
-          <div id='right'>
-            <img src={Poster} alt="poster" />
-          </div>
+
 
         </div>
-
-
-      </div>
+      </Link>
 
       {/* <form onSubmit={handleSubmit}>
         <input onChange={updateSearchValue} type="text" name='search' placeholder='Search' />
