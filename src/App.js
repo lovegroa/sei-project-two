@@ -8,6 +8,7 @@ import SiteNavbar from './components/SiteNavbar'
 import Home from './components/Home'
 import SearchResults from './components/SearchResults'
 import IndividualFilm from './components/IndividualFilm'
+import Spinner from './components/Spinner'
 
 const App = () => {
 
@@ -23,8 +24,8 @@ const App = () => {
         <div id='outside-container'>
           <Routes>
             <Route path='/' element={<Home />} />
-            <Route path='search-results/:searchTerm' element={<SearchResults />} />
-            <Route path='/film/:imdbID' element={<IndividualFilm />} />
+            <Route path='search-results/:searchTerm' element={<SearchResults Spinner={Spinner}/>} />
+            <Route path='/film/:imdbID' element={<IndividualFilm Spinner={Spinner}/>} />
             {/* <Route path='film' element={<IndividualFilm />}/> */}
           </Routes>
         </div>

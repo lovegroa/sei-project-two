@@ -4,10 +4,11 @@ import { useParams } from 'react-router-dom'
 
 
 
-const IndividualFilm = () => {
+const IndividualFilm = ( { Spinner }) => {
 
   const { imdbID } = useParams()
   const [filmData, setFilmData] = useState({})
+  const [isError, setIsError ] = useState('')
   console.log('param', imdbID)
 
   useEffect(() => {
@@ -15,9 +16,11 @@ const IndividualFilm = () => {
       try {
         const { data } = await axios.get(`http://www.omdbapi.com/?i=${imdbID}&apikey=66b63fd8`)
         console.log(data)
-        setFilmData(data)
+        data.Response === 'True' ? 
+          setFilmData(data)
+          : setIsError(data.Response)
       } catch (err) {
-        console.log(err)
+        setIsError(err.message)
       }
     }
     getFilmData()
@@ -30,27 +33,35 @@ const IndividualFilm = () => {
     <div id="film-page">
 
       <div id='main'>
-
-        <div id='left'>
-          <h1>{Title}</h1>
-          <br></br>
-          <p>Release date: {Released}</p>
-          <div id='ratings'>
-            <p>Metascore: <span>{Metascore}</span> </p>
-            <p>IMDB: <span>{imdbRating}</span></p>
-          </div>
-          <h2>Plot:</h2>
-          <br></br>
-          <p>{Plot}</p>
-          <br></br>
-
-          <h2>Starring:</h2>
-          <br></br>
-          <p>{Actors}</p>
-        </div>
-        <div id='right'>
-          <img src={Poster} alt="poster" />
-        </div>
+        <Spinner />
+        {filmData.Title ? 
+          <>
+            <div id='left'>
+              <h1>{Title}</h1>
+              <br></br>
+              <p>Release date: {Released}</p>
+              <div id='ratings'>
+                <p>Metascore: <span>{Metascore}</span> </p>
+                <p>IMDB: <span>{imdbRating}</span></p>
+              </div>
+              <h2>Plot:</h2>
+              <br></br>
+              <p>{Plot}</p>
+              <br></br>
+              <h2>Starring:</h2>
+              <br></br>
+              <p>{Actors}</p>
+            </div>
+            <div id='right'>
+              <img src={Poster} alt="poster" />
+            </div>
+          </>
+          :
+          isError ?
+            <h3>{isError} Please Try Again.</h3>
+            : <Spinner />
+        }
+        
 
       </div>
 

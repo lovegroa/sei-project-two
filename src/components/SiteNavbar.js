@@ -10,7 +10,6 @@ const SiteNavbar = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    console.log(searchValue)
     searchValue && navigate(`/search-results/${searchValue}`)
     setSearchValue('')
   }
@@ -35,7 +34,6 @@ const SiteNavbar = () => {
     const getPreSearchData = async () => {
       try {
         const { data } = await axios.get(`http://www.omdbapi.com/?t=${searchValue}&apikey=66b63fd8`)
-        console.log(data)
         setQuickSearchFilm(data)
         // console.log(data.Response)
       } catch (error) {
@@ -55,7 +53,7 @@ const SiteNavbar = () => {
     <ul>
       <div className="nav-container">
         <li>
-          <Link to='/'>Film Search</Link>
+          <Link to='/'>Home</Link>
         </li>
         <li id='search-li'>
           <form onSubmit={handleSubmit}>
