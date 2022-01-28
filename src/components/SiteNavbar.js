@@ -4,9 +4,9 @@ import axios from 'axios'
 
 const SiteNavbar = () => {
   const navigate = useNavigate()
-  
-  const [ searchValue, setSearchValue ] = useState('')
-  const [ quickSearchFilm, setQuickSearchFilm ] = useState({})
+
+  const [searchValue, setSearchValue] = useState('')
+  const [quickSearchFilm, setQuickSearchFilm] = useState({})
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -14,6 +14,13 @@ const SiteNavbar = () => {
     searchValue && navigate(`/search-results/${searchValue}`)
     setSearchValue('')
   }
+
+  const handleKeyPress = (event) => {
+    if (event.key === 'Enter') {
+      handleSubmit(event)
+    }
+  }
+
 
   const updateSearchValue = (e) => {
     setSearchValue(e.target.value)
@@ -24,7 +31,7 @@ const SiteNavbar = () => {
   }
 
   useEffect(() => {
-    
+
     const getPreSearchData = async () => {
       try {
         const { data } = await axios.get(`http://www.omdbapi.com/?t=${searchValue}&apikey=66b63fd8`)
@@ -34,7 +41,7 @@ const SiteNavbar = () => {
       } catch (error) {
         console.log(error.message)
       }
-      
+
     }
     getPreSearchData()
   }, [searchValue])
@@ -53,17 +60,17 @@ const SiteNavbar = () => {
         <li id='search-li'>
           <form onSubmit={handleSubmit}>
             <div id="search-box">
-              <input onChange={updateSearchValue} type="text" name='search' placeholder='Search' value={searchValue}/>
-              {quickSearchFilm.Response === 'True' && 
-                  <Link to ={'/film/' + quickSearchFilm.imdbID} onClick={clearSearch}>
-                    <div className='quick-search-container'>
-                      <img src={quickSearchFilm.Poster} alt={quickSearchFilm.Title}/>
-                      <div className='quick-search-text'>
-                        <h3>{quickSearchFilm.Title}</h3>
-                        <p>{quickSearchFilm.Released}</p>
-                      </div>
+              <input onChange={updateSearchValue} onKeyPress={handleKeyPress} type="text" name='search' placeholder='Search' value={searchValue} />
+              {quickSearchFilm.Response === 'True' &&
+                <Link to={'/film/' + quickSearchFilm.imdbID} onClick={clearSearch}>
+                  <div className='quick-search-container'>
+                    <img src={quickSearchFilm.Poster} alt={quickSearchFilm.Title} />
+                    <div className='quick-search-text'>
+                      <h3>{quickSearchFilm.Title}</h3>
+                      <p>{quickSearchFilm.Released}</p>
                     </div>
-                  </Link>}
+                  </div>
+                </Link>}
             </div>
             <input type="submit" value='Search' />
           </form>
@@ -72,11 +79,11 @@ const SiteNavbar = () => {
           <button onClick={goBack}>Go back</button>
         </li>
       </div>
-      
+
     </ul>
   )
 }
 
-  
+
 
 export default SiteNavbar

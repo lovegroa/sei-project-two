@@ -1,7 +1,12 @@
 ul {
+  background-color: rgb(34, 34, 34, 0.5);
+
   height: 6vh;
-  margin-top: 7px;
+  padding: 7px 0;
+  margin-bottom: 7px;
   .nav-container {
+    max-width: 1000px;
+    margin: 0 auto;
     @include flex-center(row);
     justify-content: space-around;
     form {
@@ -54,11 +59,12 @@ ul {
     li {
       list-style: none;
       cursor: pointer;
-      margin: 0 15px;
+      // margin: 0 15px;
       a {
+        font-size: larger;
         text-decoration: none;
         color: white;
-        padding: 7px;
+        padding: 7px 0;
         border: 1px solid transparent;
           &:Hover {
           background-color: darken(#ccc, 10%);
