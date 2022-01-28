@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import { useParams } from 'react-router-dom'
+import noPoster from '../images/noposter.jpeg'
+
 
 
 
@@ -31,7 +33,6 @@ const IndividualFilm = ( { Spinner }) => {
   return (
 
     <div id="film-page">
-
       <div id='main'>
         {filmData.Title ? 
           <>
@@ -52,7 +53,7 @@ const IndividualFilm = ( { Spinner }) => {
               <p>{Actors}</p>
             </div>
             <div id='right'>
-              <img src={Poster} alt="poster" />
+              {Poster === 'N/A' ? <img src={noPoster} alt="poster" /> : <img src={Poster} alt="poster" />}
             </div>
           </>
           :
@@ -60,11 +61,7 @@ const IndividualFilm = ( { Spinner }) => {
             <h3>{isError} Please Try Again.</h3>
             : <Spinner />
         }
-        
-
       </div>
-
-
     </div>
   )
 }

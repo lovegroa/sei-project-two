@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import axios from 'axios'
+import noPoster from '../images/noposter.jpeg'
+
 
 const SiteNavbar = () => {
   const navigate = useNavigate()
@@ -62,7 +64,9 @@ const SiteNavbar = () => {
               {quickSearchFilm.Response === 'True' &&
                 <Link to={'/film/' + quickSearchFilm.imdbID} onClick={clearSearch}>
                   <div className='quick-search-container'>
-                    <img src={quickSearchFilm.Poster} alt={quickSearchFilm.Title} />
+                    {quickSearchFilm.Poster === 'N/A' ? <img src={noPoster} alt="poster" /> : <img src={quickSearchFilm.Poster} alt={quickSearchFilm.Title} />}
+
+
                     <div className='quick-search-text'>
                       <h3>{quickSearchFilm.Title}</h3>
                       <p>{quickSearchFilm.Released}</p>
