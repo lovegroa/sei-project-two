@@ -33,7 +33,6 @@ const IndividualFilm = ( { Spinner }) => {
     <div id="film-page">
 
       <div id='main'>
-        <Spinner />
         {filmData.Title ? 
           <>
             <div id='left'>
