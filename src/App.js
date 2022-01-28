@@ -23,7 +23,7 @@ const App = () => {
         <SiteNavbar />
         <div id='outside-container'>
           <Routes>
-            <Route path='/' element={<Home />} />
+            <Route path='/' element={<Home Spinner={Spinner}/>} />
             <Route path='search-results/:searchTerm' element={<SearchResults Spinner={Spinner}/>} />
             <Route path='/film/:imdbID' element={<IndividualFilm Spinner={Spinner}/>} />
             {/* <Route path='film' element={<IndividualFilm />}/> */}

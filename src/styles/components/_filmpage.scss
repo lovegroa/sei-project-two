@@ -25,7 +25,7 @@ a, a:hover, a:focus, a:active {
 
   }
 
-  img{
+  .poster{
 
     height: 100%;
     width: 100%;
@@ -38,7 +38,7 @@ a, a:hover, a:focus, a:active {
 
 .bg {
   animation:slide 15s ease-in-out infinite alternate;
-  background-image: linear-gradient(-60deg, rgb(0, 0, 0) 50%, rgb(255, 255, 255) 50%, rgb(0, 0, 0) );
+  background-image: linear-gradient(-60deg, rgb(0, 48, 119) 50%, rgb(185, 207, 248) 50%, rgb(2, 44, 100) );
   bottom:0;
   left:-50%;
   opacity:.5;
@@ -69,7 +69,7 @@ a, a:hover, a:focus, a:active {
 
 #outside-container{
   max-width: 1000px;
-  margin: 0  auto;
+  margin: 30px auto;
   background-color: #222222;
   min-height: 90vh;
   border-radius: 30px;

@@ -53,7 +53,7 @@ const IndividualFilm = ( { Spinner }) => {
               <p>{Actors}</p>
             </div>
             <div id='right'>
-              {Poster === 'N/A' ? <img src={noPoster} alt="poster" /> : <img src={Poster} alt="poster" />}
+              {Poster === 'N/A' ? <img className='poster' src={noPoster} alt="poster" /> : <img className='poster' src={Poster} alt="poster" />}
             </div>
           </>
           :

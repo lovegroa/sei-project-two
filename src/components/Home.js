@@ -4,10 +4,11 @@ import { Link, useNavigate } from 'react-router-dom'
 import noPoster from '../images/noposter.jpeg'
 
 
-const Home = () => {
+const Home = ({ Spinner }) => {
   const navigate = useNavigate()
   const [searchValue, setSearchValue] = useState('')
   const [filmData, setFilmData] = useState({})
+  const [isError, setIsError] = useState('')
 
 
   const handleSubmit = (e) => {
@@ -31,7 +32,7 @@ const Home = () => {
         setSearchValue(data)
         // console.log(data.Response)
       } catch (error) {
-        console.log(error.message)
+        setIsError(error.message)
       }
 
     }
@@ -63,33 +64,36 @@ const Home = () => {
 
   return (
     <>
-      <h1>Home</h1>
-      <h2>Here is a random film just for you:</h2>
+      <div className='title'>
+        <h1>Home</h1>
+        <h2>Here is a random film just for you:</h2>
+      </div>
       <br></br>
-      <Link to={`/film/${imdbID}`}>
-        <div id="film-page">
-
-          <div id='main'>
-
-
-            <div id='left'>
-              <h1>{Title}</h1>
-              <p>{Released}</p>
-              <div id='ratings'>
-                <p>Metascore: <span>{Metascore}</span></p>
-                <p>IMDB: <span>{imdbRating}</span></p>
+      {filmData.Title ?
+        <Link to={`/film/${imdbID}`}>
+          <div id="film-page">
+            <div id='main'>
+              <div id='left'>
+                <h1>{Title}</h1>
+                <p>{Released}</p>
+                <div id='ratings'>
+                  <p>Metascore: <span>{Metascore}</span></p>
+                  <p>IMDB: <span>{imdbRating}</span></p>
+                </div>
+              </div>
+              <div id='right'>
+                {Poster === 'N/A' ? <img className='poster' src={noPoster} alt="poster" /> : <img className='poster' src={Poster} alt="poster" />}
               </div>
             </div>
-            <div id='right'>
-              {Poster === 'N/A' ? <img src={noPoster} alt="poster" /> : <img src={Poster} alt="poster" />}
-
-            </div>
-
           </div>
-
-
-        </div>
-      </Link>
+        </Link>
+        : 
+        isError ?
+          <h3>{isError}. Try Searching films instead</h3>
+          : <Spinner />
+          // null
+      }
+      
 
       {/* <form onSubmit={handleSubmit}>
         <input onChange={updateSearchValue} type="text" name='search' placeholder='Search' />
